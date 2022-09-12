@@ -1,5 +1,5 @@
-﻿// <copyright file="ServiceExtensions.cs" company="PlaceholderCompany">
-// Copyright (c) PlaceholderCompany. All rights reserved.
+﻿// <copyright file="ServiceExtensions.cs" company="CompanyName">
+// Copyright (c) CompanyName. All rights reserved.
 // </copyright>
 
 namespace Cko_Payment_Module.Extensions

@@ -1,0 +1,15 @@
+<Project>
+ <PropertyGroup>
+   <Deterministic>true</Deterministic>
+ </PropertyGroup>
+   <ItemGroup>
+    <!-- Add reference to StyleCop analyzers to all projects  -->
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    
+    <!-- Common StyleCop configuration -->
+   <AdditionalFiles Include="$(ProjectDir)..\stylecop.json" Link="stylecop.json" />
+  </ItemGroup>
+</Project>
