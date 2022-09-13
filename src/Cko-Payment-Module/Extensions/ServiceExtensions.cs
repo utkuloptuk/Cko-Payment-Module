@@ -6,6 +6,8 @@ namespace Cko_Payment_Module.Extensions
 {
     using Contracts;
     using Repository;
+    using Service;
+    using Service.Contracts;
 
     /// <summary>
     /// Service Extension class.
@@ -34,6 +36,25 @@ namespace Cko_Payment_Module.Extensions
         public static void ConfigureRepositoryManager(this IServiceCollection services)
         {
             services.AddScoped<IRepositoryManager, RepositoryManager>();
+        }
+
+        /// <summary>
+        /// servicemanager configuration class.
+        /// </summary>
+        /// <param name="services">service.</param>
+        public static void ConfigureServiceManager(this IServiceCollection services)
+        {
+            services.AddScoped<IServiceManager, ServiceManager>();
+        }
+
+        /// <summary>
+        /// sqlcontext configuration class.
+        /// </summary>
+        /// <param name="services">Service.</param>
+        /// <param name="conf">Conf value.</param>
+        public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration conf)
+        {
+            services.AddSqlServer<RepositoryContext>(conf.GetConnectionString("SqlConnection"));
         }
     }
 }
