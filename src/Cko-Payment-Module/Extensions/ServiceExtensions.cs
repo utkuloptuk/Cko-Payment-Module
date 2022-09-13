@@ -4,6 +4,9 @@
 
 namespace Cko_Payment_Module.Extensions
 {
+    using Contracts;
+    using Repository;
+
     /// <summary>
     /// Service Extension class.
     /// </summary>
@@ -22,6 +25,15 @@ namespace Cko_Payment_Module.Extensions
                 .AllowAnyMethod()
                 .AllowAnyHeader());
             });
+        }
+
+        /// <summary>
+        /// RepositoryManager configuration class.
+        /// </summary>
+        /// <param name="services">Service.</param>
+        public static void ConfigureRepositoryManager(this IServiceCollection services)
+        {
+            services.AddScoped<IRepositoryManager, RepositoryManager>();
         }
     }
 }
