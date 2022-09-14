@@ -38,17 +38,9 @@ namespace Service
         /// <returns>customer.</returns>
         public IEnumerable<CustomerDto> GetAllCustomers(bool trackChanges)
         {
-            try
-            {
-                var customers = this.repositoryManager.CustomerRepository.GetAllCustomers(trackChanges);
-                var customersDto = this.mapper.Map<IEnumerable<CustomerDto>>(customers);
-                return customersDto;
-            }
-            catch (Exception ex)
-            {
-                this.loggerManager.LogError($"Something went wrong in the {nameof(this.GetAllCustomers)} service method {ex}");
-                throw;
-            }
+            var customers = this.repositoryManager.CustomerRepository.GetAllCustomers(trackChanges);
+            var customersDto = this.mapper.Map<IEnumerable<CustomerDto>>(customers);
+            return customersDto;
         }
     }
 }

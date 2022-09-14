@@ -28,19 +28,12 @@ namespace Cko_Payment_Module.Presentation.Controllers
         /// <summary>
         /// presentation layer getcustomers.
         /// </summary>
-        /// <returns>Ok or Error message.</returns>
+        /// <returns>StatusCode 200 or 500.</returns>
         [HttpGet]
         public IActionResult GetCustomers()
         {
-            try
-            {
-                var customers = this.serviceManager.CustomerService.GetAllCustomers(trackChanges: false);
-                return this.Ok(customers);
-            }
-            catch
-            {
-                return this.StatusCode(500, "Internal server error.");
-            }
+            var customers = this.serviceManager.CustomerService.GetAllCustomers(trackChanges: false);
+            return this.Ok(customers);
         }
     }
 }

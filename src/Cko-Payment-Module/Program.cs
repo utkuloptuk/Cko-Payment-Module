@@ -3,6 +3,7 @@
 // </copyright>
 
 using Cko_Payment_Module.Extensions;
+using Contracts;
 using Microsoft.AspNetCore.HttpOverrides;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -18,12 +19,9 @@ builder.Services.AddControllers()
     .AddApplicationPart(typeof(Cko_Payment_Module.Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
-
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
+var logger = app.Services.GetRequiredService<ILoggerManager>();
+app.ConfigureExceptionHandler(logger);
+if (app.Environment.IsProduction())
 {
     app.UseHsts();
 }
