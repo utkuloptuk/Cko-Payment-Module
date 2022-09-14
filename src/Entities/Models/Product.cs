@@ -4,9 +4,10 @@
 
 namespace Entities.Models
 {
-    using Entities.Enums;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Entities.Enums;
+
     /// <summary>
     /// Product table.
     /// </summary>

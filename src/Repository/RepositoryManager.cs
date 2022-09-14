@@ -13,6 +13,7 @@ namespace Repository
     {
         private readonly RepositoryContext repositoryContext;
         private readonly Lazy<ICustomerRepository> customersRepository;
+        private readonly Lazy<IProductRepository> productRepository;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RepositoryManager"/> class.
@@ -22,12 +23,18 @@ namespace Repository
         {
             this.repositoryContext = repositoryContext;
             this.customersRepository = new Lazy<ICustomerRepository>(() => new CustomerRepository(this.repositoryContext));
+            this.productRepository = new Lazy<IProductRepository>(() => new ProductRepository(this.repositoryContext));
         }
 
         /// <summary>
         /// Gets customerRepo.
         /// </summary>
         public ICustomerRepository CustomerRepository => this.customersRepository.Value;
+
+        /// <summary>
+        /// gets productrepo.
+        /// </summary>
+        public IProductRepository ProductRepository => this.productRepository.Value;
 
         /// <summary>
         /// save.

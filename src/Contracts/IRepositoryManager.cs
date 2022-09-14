@@ -13,5 +13,10 @@ namespace Contracts
         /// gets customer repo.
         /// </summary>
         ICustomerRepository CustomerRepository { get; }
+
+        /// <summary>
+        /// Gets product repo.
+        /// </summary>
+        IProductRepository ProductRepository { get; }
     }
 }

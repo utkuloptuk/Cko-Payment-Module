@@ -13,5 +13,10 @@ namespace Service.Contracts
         /// Gets customer service interface.
         /// </summary>
         ICustomerService CustomerService { get; }
+
+        /// <summary>
+        /// gets products service interface.
+        /// </summary>
+        IProductService ProductService { get; }
     }
 }
