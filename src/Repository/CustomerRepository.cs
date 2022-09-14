@@ -8,7 +8,7 @@ namespace Repository
     using Entities.Models;
 
     /// <inheritdoc/>
-    public class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
+    internal sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CustomerRepository"/> class.
@@ -17,6 +17,12 @@ namespace Repository
         public CustomerRepository(RepositoryContext repositoryContext)
             : base(repositoryContext)
         {
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<Customer> GetAllCustomers(bool trackChanges)
+        {
+            return this.FindAll(trackChanges).OrderBy(c => c.Id).ToList();
         }
     }
 }
