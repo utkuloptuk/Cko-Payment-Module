@@ -4,6 +4,7 @@
 
 namespace Entities.Models
 {
+    using Entities.Enums;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     /// <summary>
@@ -38,7 +39,7 @@ namespace Entities.Models
         /// <summary>
         /// gets or sets ProductType.
         /// </summary>
-        public int ProductType { get; set; }
+        public ProductType ProductType { get; set; }
 
         /// <summary>
         /// gets or sets update time.

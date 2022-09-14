@@ -27,6 +27,7 @@ namespace Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomersConfiguration());
+            modelBuilder.ApplyConfiguration(new ProductsConfiguration());
             modelBuilder.ConfigureDbContext();
         }
 
