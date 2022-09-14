@@ -71,5 +71,10 @@ namespace Entities.Models
         /// </summary>
         [Required(ErrorMessage = $"{nameof(Customer)} {nameof(CreationDate)} can not be null.")]
         public DateTime CreationDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets invoices relation.
+        /// </summary>
+        public ICollection<Invoice> Invoices { get; set; }
     }
 }

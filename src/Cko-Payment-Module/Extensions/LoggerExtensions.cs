@@ -2,11 +2,11 @@
 // Copyright (c) CompanyName. All rights reserved.
 // </copyright>
 
-using Contracts;
-using LoggerService;
-
 namespace Cko_Payment_Module.Extensions
 {
+    using Contracts;
+    using LoggerService;
+
     /// <summary>
     /// Logger extension.
     /// </summary>

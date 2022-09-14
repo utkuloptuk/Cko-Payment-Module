@@ -27,11 +27,27 @@ namespace Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new CustomersConfiguration());
+            modelBuilder.ConfigureDbContext();
         }
 
         /// <summary>
         /// Gets or sets customer table implementation.
         /// </summary>
-        public DbSet<Customer>? Customers { get; set; }
+        public DbSet<Customer> Customers { get; set; }
+
+        /// <summary>
+        /// gets or sets Invoices table implementation.
+        /// </summary>
+        public DbSet<Invoice> Invoices { get; set; }
+
+        /// <summary>
+        /// gets or sets ınvoiceDetail table implementation.
+        /// </summary>
+        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
+
+        /// <summary>
+        /// gets or sets product table implementation.
+        /// </summary>
+        public DbSet<Product> Products { get; set; }
     }
 }
