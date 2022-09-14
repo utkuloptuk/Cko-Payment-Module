@@ -4,6 +4,7 @@
 
 namespace Service
 {
+    using AutoMapper;
     using global::Contracts;
     using Service.Contracts;
 
@@ -13,14 +14,16 @@ namespace Service
     public sealed class ServiceManager : IServiceManager
     {
         private readonly Lazy<ICustomerService> customerService;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceManager"/> class.
         /// </summary>
         /// <param name="repositoryManager">repomanager.</param>
         /// <param name="logger">logger.</param>
-        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger)
+        /// <param name="mapper">mapper.</param>
+        public ServiceManager(IRepositoryManager repositoryManager, ILoggerManager logger, IMapper mapper)
         {
-            this.customerService = new Lazy<ICustomerService>(() => new CustomerService(repositoryManager, logger));
+            this.customerService = new Lazy<ICustomerService>(() => new CustomerService(repositoryManager, logger, mapper));
         }
 
         /// <summary>

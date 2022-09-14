@@ -4,10 +4,18 @@
 
 namespace Contracts
 {
+    using Entities.Models;
+
     /// <summary>
     /// customer interface.
     /// </summary>
     public interface ICustomerRepository
     {
+        /// <summary>
+        /// get all customers.
+        /// </summary>
+        /// <param name="trackChanges">asnotracking control.</param>
+        /// <returns>customers.</returns>
+        IEnumerable<Customer> GetAllCustomers(bool trackChanges);
     }
 }

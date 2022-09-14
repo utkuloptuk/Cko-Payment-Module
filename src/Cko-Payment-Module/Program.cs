@@ -12,7 +12,10 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureLogs();
 builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
-builder.Services.AddControllers();
+builder.Services.ConfigureSqlContext(builder.Configuration);
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddControllers()
+    .AddApplicationPart(typeof(Cko_Payment_Module.Presentation.AssemblyReference).Assembly);
 
 var app = builder.Build();
 
