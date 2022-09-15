@@ -5,6 +5,7 @@
 namespace Service
 {
     using AutoMapper;
+    using Entities.Exceptions;
     using global::Contracts;
     using Service.Contracts;
     using Shared.Dtos;
@@ -40,6 +41,24 @@ namespace Service
         {
             var products = this.repositoryManager.ProductRepository.GetAllProducts(trackChanges);
             var productDto = this.mapper.Map<IEnumerable<ProductDto>>(products);
+            return productDto;
+        }
+
+        /// <summary>
+        /// getbyid service layer.
+        /// </summary>
+        /// <param name="id">condition.</param>
+        /// <param name="trackChanges">asnotracking control.</param>
+        /// <returns>productDto.</returns>
+        public ProductDto GetProduct(Guid id, bool trackChanges)
+        {
+            var product = this.repositoryManager.ProductRepository.GetById(id, trackChanges);
+            if (product is null)
+            {
+                throw new ProductNotFoundException(id);
+            }
+
+            var productDto = this.mapper.Map<ProductDto>(product);
             return productDto;
         }
     }

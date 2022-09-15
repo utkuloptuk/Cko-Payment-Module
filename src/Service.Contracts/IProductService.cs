@@ -12,10 +12,18 @@ namespace Service.Contracts
     public interface IProductService
     {
         /// <summary>
-        /// get all customers.
+        /// get all products.
         /// </summary>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>customers data.</returns>
         IEnumerable<ProductDto> GetAllProducts(bool trackChanges);
+
+        /// <summary>
+        /// get all product.
+        /// </summary>
+        /// <param name="id">condition.</param>
+        /// <param name="trackChanges">asnottracking control.</param>
+        /// <returns>productdto.</returns>
+        ProductDto GetProduct(Guid id, bool trackChanges);
     }
 }

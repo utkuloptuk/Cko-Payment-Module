@@ -7,6 +7,7 @@ namespace Cko_Payment_Module.Extensions
     using System.Net;
     using Contracts;
     using Entities.ErrorModel;
+    using Entities.Exceptions;
     using Microsoft.AspNetCore.Diagnostics;
 
     /// <summary>
@@ -31,11 +32,17 @@ namespace Cko_Payment_Module.Extensions
                     var contextFeature = context.Features.Get<IExceptionHandlerFeature>();
                     if (contextFeature != null)
                     {
+                        context.Response.StatusCode = contextFeature.Error switch
+                        {
+                            NotFoundException => StatusCodes.Status404NotFound,
+                            _ => StatusCodes.Status500InternalServerError,
+                        };
+
                         loggerManager.LogError($"Something went wrong:{contextFeature.Error}");
                         await context.Response.WriteAsync(new ErrorDetails()
                         {
                             StatusCode = context.Response.StatusCode,
-                            Message = "Internal server error.",
+                            Message = contextFeature.Error.Message,
                         }.ToString());
                     }
                 });
