@@ -18,5 +18,15 @@ namespace Contracts
         /// Gets product repo.
         /// </summary>
         IProductRepository ProductRepository { get; }
+
+        /// <summary>
+        /// gets.
+        /// </summary>
+        IInvoiceRepository InvoiceRepository { get; }
+
+        /// <summary>
+        /// save.
+        /// </summary>
+        void Save();
     }
 }
