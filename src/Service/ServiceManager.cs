@@ -16,6 +16,7 @@ namespace Service
         private readonly Lazy<ICustomerService> customerService;
         private readonly Lazy<IProductService> productService;
         private readonly Lazy<IInvoiceService> invoiceService;
+        private readonly Lazy<IInvoiceDetailService> invoiceDetailService;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ServiceManager"/> class.
@@ -28,6 +29,7 @@ namespace Service
             this.customerService = new Lazy<ICustomerService>(() => new CustomerService(repositoryManager, logger, mapper));
             this.productService = new Lazy<IProductService>(() => new ProductService(repositoryManager, logger, mapper));
             this.invoiceService = new Lazy<IInvoiceService>(() => new InvoiceService(repositoryManager, logger, mapper));
+            this.invoiceDetailService = new Lazy<IInvoiceDetailService>(() => new InvoiceDetailService(repositoryManager, logger, mapper));
         }
 
         /// <summary>
@@ -44,5 +46,10 @@ namespace Service
         /// gets invoice service.
         /// </summary>
         public IInvoiceService InvoiceService => this.invoiceService.Value;
+
+        /// <summary>
+        /// gets invoice detail service.
+        /// </summary>
+        public IInvoiceDetailService InvoiceDetailService => this.invoiceDetailService.Value;
     }
 }

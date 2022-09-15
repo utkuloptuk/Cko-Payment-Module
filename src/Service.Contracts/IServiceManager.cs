@@ -23,5 +23,10 @@ namespace Service.Contracts
         /// gets invoice service interface.
         /// </summary>
         IInvoiceService InvoiceService { get; }
+
+        /// <summary>
+        /// gets invoice detail intterface.
+        /// </summary>
+        IInvoiceDetailService InvoiceDetailService { get; }
     }
 }

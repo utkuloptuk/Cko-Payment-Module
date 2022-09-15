@@ -25,6 +25,11 @@ namespace Contracts
         IInvoiceRepository InvoiceRepository { get; }
 
         /// <summary>
+        /// gets.
+        /// </summary>
+        IInvoiceDetailRepository InvoiceDetailRepository { get; }
+
+        /// <summary>
         /// save.
         /// </summary>
         void Save();

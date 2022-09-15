@@ -24,6 +24,8 @@ namespace Cko_Payment_Module
             this.CreateMap<Product, ProductDto>();
             this.CreateMap<Invoice, InvoiceDto>();
             this.CreateMap<Invoice, InvoiceForCreationDto>().ReverseMap();
+            this.CreateMap<InvoiceDetail, InvoiceDetailDto>();
+            this.CreateMap<InvoiceDetailForCreationDto, InvoiceDetail>();
         }
     }
 }
