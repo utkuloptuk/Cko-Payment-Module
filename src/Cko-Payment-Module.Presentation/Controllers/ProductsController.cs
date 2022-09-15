@@ -35,5 +35,17 @@ namespace Cko_Payment_Module.Presentation.Controllers
             var products = this.serviceManager.ProductService.GetAllProducts(trackChanges: false);
             return this.Ok(products);
         }
+
+        /// <summary>
+        /// getProduct presentation layer.
+        /// </summary>
+        /// <param name="id">condition.</param>
+        /// <returns>status code 200 or 404.</returns>
+        [HttpGet("{id:guid}")]
+        public IActionResult GetProduct(Guid id)
+        {
+            var product = this.serviceManager.ProductService.GetProduct(id, trackChanges: false);
+            return this.Ok(product);
+        }
     }
 }

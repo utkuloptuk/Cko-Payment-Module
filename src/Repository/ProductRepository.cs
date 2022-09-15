@@ -6,6 +6,7 @@ namespace Repository
 {
     using Contracts;
     using Entities.Models;
+    using System;
 
     ///<inheritdoc/>
     internal sealed class ProductRepository : RepositoryBase<Product>, IProductRepository
@@ -19,10 +20,15 @@ namespace Repository
         {
         }
 
-        ///<inheritdoc/>
+        /// <inheritdoc/>
         public IEnumerable<Product> GetAllProducts(bool trackChanges)
         {
             return this.FindAll(trackChanges).OrderBy(c => c.Id).ToList();
+        }
+
+        public Product GetById(Guid productId, bool trackChanges)
+        {
+            return FindByCondition(x => x.Id.Equals(productId), trackChanges).SingleOrDefault();
         }
     }
 }
