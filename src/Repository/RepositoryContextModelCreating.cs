@@ -24,8 +24,8 @@ namespace Repository
                 .HasOne(p => p.Customers)
                 .WithMany(c => c.Invoices)
                 .HasForeignKey(x => x.CustomerId);
-                b.Property(c => c.NetPrice).HasPrecision(10, 10);
-                b.Property(c => c.GrossPrice).HasPrecision(10, 10);
+                b.Property(c => c.NetPrice).HasPrecision(10, 3);
+                b.Property(c => c.GrossPrice).HasPrecision(10, 3);
             });
             builder.Entity<InvoiceDetail>(i =>
             {
@@ -41,7 +41,7 @@ namespace Repository
             });
             builder.Entity<Product>(p =>
             {
-                p.Property(q => q.Price).HasPrecision(5);
+                p.Property(q => q.Price).HasPrecision(10, 3);
             });
         }
     }

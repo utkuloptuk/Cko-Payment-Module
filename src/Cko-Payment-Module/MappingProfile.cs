@@ -22,6 +22,8 @@ namespace Cko_Payment_Module
                 .ForCtorParam("email", opt => opt.MapFrom(x => string.IsNullOrEmpty(x.Email) ? "Not registered." : x.Email))
                 .ForCtorParam("telNo", opt => opt.MapFrom(x => string.IsNullOrEmpty(x.TelephoneNumber) ? "Not registered." : x.TelephoneNumber));
             this.CreateMap<Product, ProductDto>();
+            this.CreateMap<Invoice, InvoiceDto>();
+            this.CreateMap<Invoice, InvoiceForCreationDto>().ReverseMap();
         }
     }
 }
