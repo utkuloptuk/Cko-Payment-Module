@@ -10,12 +10,21 @@ using Shared.Dtos;
 
 namespace Service
 {
+    /// <summary>
+    /// InvoiceService service layer.
+    /// </summary>
     internal sealed class InvoiceService : IInvoiceService
     {
         private readonly IRepositoryManager repositoryManager;
         private readonly ILoggerManager loggerManager;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InvoiceService"/> class.
+        /// </summary>
+        /// <param name="repositoryManager">repo imp.</param>
+        /// <param name="loggerManager">logger imp.</param>
+        /// <param name="mapper">mapper imp.</param>
         public InvoiceService(IRepositoryManager repositoryManager, ILoggerManager loggerManager, IMapper mapper)
         {
             this.repositoryManager = repositoryManager;
@@ -23,6 +32,11 @@ namespace Service
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// create invoice.
+        /// </summary>
+        /// <param name="invoice">input.</param>
+        /// <returns>returns 200 or 400.</returns>
         public InvoiceDto CreateInvoice(InvoiceForCreationDto invoice)
         {
             var invoiceEntity = this.mapper.Map<Invoice>(invoice);

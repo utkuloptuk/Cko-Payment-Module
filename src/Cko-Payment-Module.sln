@@ -17,9 +17,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service.Contracts", "Servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Service", "Service\Service.csproj", "{D397A479-4CA1-4090-9F2F-D6C716D0C6CA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko-Payment-Module.Presentation", "Cko-Payment-Module.Presentation\Cko-Payment-Module.Presentation.csproj", "{57A98047-20C0-456F-839C-9E947F268B3A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cko-Payment-Module.Presentation", "Cko-Payment-Module.Presentation\Cko-Payment-Module.Presentation.csproj", "{57A98047-20C0-456F-839C-9E947F268B3A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared.csproj", "{81541385-7CD6-41C4-89E4-C9285CFE8672}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shared", "Shared\Shared.csproj", "{81541385-7CD6-41C4-89E4-C9285CFE8672}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cko-Payment-Module.Tests", "Cko-Payment-Module.Tests\Cko-Payment-Module.Tests.csproj", "{EEDF7D9E-2A05-4C8C-B933-E1B420F65F6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{81541385-7CD6-41C4-89E4-C9285CFE8672}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81541385-7CD6-41C4-89E4-C9285CFE8672}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81541385-7CD6-41C4-89E4-C9285CFE8672}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEDF7D9E-2A05-4C8C-B933-E1B420F65F6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDF7D9E-2A05-4C8C-B933-E1B420F65F6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDF7D9E-2A05-4C8C-B933-E1B420F65F6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDF7D9E-2A05-4C8C-B933-E1B420F65F6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

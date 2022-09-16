@@ -10,7 +10,7 @@ namespace Entities.Exceptions
         /// Initializes a new instance of the <see cref="ProductNotFoundException"/> class.
         /// </summary>
         /// <param name="productId">input.</param>
-        public ProductNotFoundException(Guid productId) 
+        public ProductNotFoundException(Guid productId)
             : base($"The product with id: {productId} doesn't exist in the database.")
         {
         }
