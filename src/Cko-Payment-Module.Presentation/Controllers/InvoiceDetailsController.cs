@@ -3,7 +3,7 @@
 // </copyright>
 
 
-namespace Cko_Payment_Module.Presentation
+namespace Cko_Payment_Module.Presentation.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Service.Contracts;
@@ -37,10 +37,10 @@ namespace Cko_Payment_Module.Presentation
         {
             if (invoiceDetail is null)
             {
-                return this.BadRequest($"{nameof(InvoiceDetailForCreationDto)} object is null.");
+                return BadRequest($"{nameof(InvoiceDetailForCreationDto)} object is null.");
             }
-            var createdInvoiceDetail = this.serviceManager.InvoiceDetailService.CreateInvoiceDetail(invoiceDetail);
-            return this.Ok(createdInvoiceDetail);
+            var createdInvoiceDetail = serviceManager.InvoiceDetailService.CreateInvoiceDetail(invoiceDetail);
+            return Ok(createdInvoiceDetail);
         }
     }
 }
