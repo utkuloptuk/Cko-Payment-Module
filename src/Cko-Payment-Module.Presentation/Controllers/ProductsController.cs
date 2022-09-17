@@ -6,6 +6,7 @@ namespace Cko_Payment_Module.Presentation.Controllers
 {
     using Microsoft.AspNetCore.Mvc;
     using Service.Contracts;
+    using Shared.Dtos;
 
     /// <summary>
     /// products controller.
@@ -48,4 +49,13 @@ namespace Cko_Payment_Module.Presentation.Controllers
             return this.Ok(product);
         }
     }
+    //    [HttpGet]
+    //    [Route("bulkProducts")]
+    //    public IActionResult BulkGetProducts([FromBody] vars names)
+    //    {
+    //        var products = this.serviceManager.ProductService.BulkGetProducts(names.varq, trackChanges: false);
+    //        return this.Ok(products);
+    //    }
+    //}
+    //public record vars(IEnumerable<PaymentProcessProductDto> varq);
 }

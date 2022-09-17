@@ -19,11 +19,19 @@ namespace Service.Contracts
         IEnumerable<ProductDto> GetAllProducts(bool trackChanges);
 
         /// <summary>
-        /// get all product.
+        /// get product.
         /// </summary>
         /// <param name="id">condition.</param>
         /// <param name="trackChanges">asnottracking control.</param>
         /// <returns>productdto.</returns>
         ProductDto GetProduct(Guid id, bool trackChanges);
+
+        /// <summary>
+        /// get bulk products.
+        /// </summary>
+        /// <param name="bulkData">condition.</param>
+        /// <param name="trackChanges">asnotracking.</param>
+        /// <returns>IEnum productDto.</returns>
+        IEnumerable<ProductDto> BulkGetProducts(IEnumerable<PaymentProcessProductDto> bulkData, bool trackChanges);
     }
 }
