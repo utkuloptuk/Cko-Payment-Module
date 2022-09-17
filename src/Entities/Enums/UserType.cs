@@ -4,6 +4,7 @@
 
 namespace Entities.Enums
 {
+    //appconfig.
     /// <summary>
     /// userType.
     /// </summary>

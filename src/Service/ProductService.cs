@@ -45,6 +45,20 @@ namespace Service
         }
 
         /// <summary>
+        /// service layer bulkgetproducts.
+        /// </summary>
+        /// <param name="bulkData">condition.</param>
+        /// <param name="trackChanges">asnotracking control.</param>
+        /// <returns>Ienum productDto.</returns>
+        public IEnumerable<ProductDto> BulkGetProducts(IEnumerable<PaymentProcessProductDto> bulkData, bool trackChanges)
+        {
+            var bulkDataNames = this.mapper.Map<ProductForBulkGetDto>(bulkData);
+            var products = this.repositoryManager.ProductRepository.BulkGetProductsByName(bulkDataNames.names, trackChanges);
+            var productsDto = this.mapper.Map<IEnumerable<ProductDto>>(products);
+            return productsDto;
+        }
+
+        /// <summary>
         /// getbyid service layer.
         /// </summary>
         /// <param name="id">condition.</param>

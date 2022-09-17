@@ -19,11 +19,19 @@ namespace Contracts
         IEnumerable<Product> GetAllProducts(bool trackChanges);
 
         /// <summary>
-        /// get customer by name.
+        /// get product by id.
         /// </summary>
         /// <param name="productId">get condition.</param>
         /// <param name="trackChanges">asnotracking.</param>
         /// <returns>Product.</returns>
         Product GetById(Guid productId, bool trackChanges);
+
+        /// <summary>
+        /// get products by name.
+        /// </summary>
+        /// <param name="names">get condition.</param>
+        /// <param name="trackChanges">asnotracking control.</param>
+        /// <returns>Products.</returns>
+        public IEnumerable<Product> BulkGetProductsByName(IEnumerable<string> names, bool trackChanges);
     }
 }

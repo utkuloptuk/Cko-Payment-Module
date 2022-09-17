@@ -45,6 +45,7 @@ namespace Cko_Payment_Module.Extensions
         public static void ConfigureServiceManager(this IServiceCollection services)
         {
             services.AddScoped<IServiceManager, ServiceManager>();
+            services.AddTransient<IPaymentProcessService, PaymentProcessService>();
         }
 
         /// <summary>

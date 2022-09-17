@@ -4,11 +4,12 @@
 
 namespace Repository
 {
+    using System;
+    using System.Linq;
     using Contracts;
     using Entities.Models;
-    using System;
 
-    ///<inheritdoc/>
+    /// <inheritdoc/>
     internal sealed class ProductRepository : RepositoryBase<Product>, IProductRepository
     {
         /// <summary>
@@ -26,9 +27,16 @@ namespace Repository
             return this.FindAll(trackChanges).OrderBy(c => c.Id).ToList();
         }
 
+        /// <inheritdoc/>
         public Product GetById(Guid productId, bool trackChanges)
         {
-            return FindByCondition(x => x.Id.Equals(productId), trackChanges).SingleOrDefault();
+            return this.FindByCondition(x => x.Id.Equals(productId), trackChanges).SingleOrDefault();
+        }
+
+        /// <inheritdoc/>
+        public IEnumerable<Product> BulkGetProductsByName(IEnumerable<string> names, bool trackChanges)
+        {
+            return this.FindByCondition(x => names.Contains(x.Name), trackChanges).ToList();
         }
     }
 }
