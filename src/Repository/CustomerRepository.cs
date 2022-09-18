@@ -6,6 +6,7 @@ namespace Repository
 {
     using Contracts;
     using Entities.Models;
+    using Microsoft.EntityFrameworkCore;
 
     /// <inheritdoc/>
     internal sealed class CustomerRepository : RepositoryBase<Customer>, ICustomerRepository
@@ -20,9 +21,9 @@ namespace Repository
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Customer> GetAllCustomers(bool trackChanges)
+        public async Task<IEnumerable<Customer>> GetAllCustomersAsync(bool trackChanges)
         {
-            return this.FindAll(trackChanges).OrderBy(c => c.Id).ToList();
+            return await this.FindAll(trackChanges).OrderBy(c => c.Id).ToListAsync();
         }
     }
 }

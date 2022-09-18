@@ -36,7 +36,7 @@ namespace Cko_Payment_Module.Presentation.Helpers
                     break;
 
                 case UserType.Common:
-                    if (DateTime.Now.Subtract(customer.creationDate).Days > 730)
+                    if (DateTime.Now.Subtract(customer.creationDate).Days > (int)VeteranDay.DayCount)
                     {
                         discount = grossPriceWithoutDiscountProduct * this.CalculatedDiscountPercentage(DiscountPercent.Common);
                     }

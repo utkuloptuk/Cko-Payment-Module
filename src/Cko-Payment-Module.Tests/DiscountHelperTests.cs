@@ -17,7 +17,7 @@ namespace Cko_Payment_Module.Tests
         /// <summary>
         /// new.
         /// </summary>
-        public PriceCalculationService priceCalculationService;
+        private PriceCalculationService priceCalculationService;
 
         /// <summary>
         /// initialize method.

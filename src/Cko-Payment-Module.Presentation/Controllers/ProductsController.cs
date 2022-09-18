@@ -31,9 +31,9 @@ namespace Cko_Payment_Module.Presentation.Controllers
         /// </summary>
         /// <returns>Status code 200 or 500.</returns>
         [HttpGet]
-        public IActionResult GetProducts()
+        public async Task<IActionResult> GetProducts()
         {
-            var products = this.serviceManager.ProductService.GetAllProducts(trackChanges: false);
+            var products = await this.serviceManager.ProductService.GetAllProductsAsync(trackChanges: false);
             return this.Ok(products);
         }
 
@@ -43,19 +43,10 @@ namespace Cko_Payment_Module.Presentation.Controllers
         /// <param name="id">condition.</param>
         /// <returns>status code 200 or 404.</returns>
         [HttpGet("{id:guid}")]
-        public IActionResult GetProduct(Guid id)
+        public async Task<IActionResult> GetProductAsync(Guid id)
         {
-            var product = this.serviceManager.ProductService.GetProduct(id, trackChanges: false);
+            var product = await this.serviceManager.ProductService.GetProductAsync(id, trackChanges: false);
             return this.Ok(product);
         }
     }
-    //    [HttpGet]
-    //    [Route("bulkProducts")]
-    //    public IActionResult BulkGetProducts([FromBody] vars names)
-    //    {
-    //        var products = this.serviceManager.ProductService.BulkGetProducts(names.varq, trackChanges: false);
-    //        return this.Ok(products);
-    //    }
-    //}
-    //public record vars(IEnumerable<PaymentProcessProductDto> varq);
 }

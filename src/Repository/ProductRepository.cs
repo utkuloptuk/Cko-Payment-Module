@@ -8,6 +8,7 @@ namespace Repository
     using System.Linq;
     using Contracts;
     using Entities.Models;
+    using Microsoft.EntityFrameworkCore;
 
     /// <inheritdoc/>
     internal sealed class ProductRepository : RepositoryBase<Product>, IProductRepository
@@ -22,21 +23,21 @@ namespace Repository
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Product> GetAllProducts(bool trackChanges)
+        public async Task<IEnumerable<Product>> GetAllProductsAsync(bool trackChanges)
         {
-            return this.FindAll(trackChanges).OrderBy(c => c.Id).ToList();
+            return await this.FindAll(trackChanges).OrderBy(c => c.Id).ToListAsync();
         }
 
         /// <inheritdoc/>
-        public Product GetById(Guid productId, bool trackChanges)
+        public async Task<Product> GetByIdAsync(Guid productId, bool trackChanges)
         {
-            return this.FindByCondition(x => x.Id.Equals(productId), trackChanges).SingleOrDefault();
+            return await this.FindByCondition(x => x.Id.Equals(productId), trackChanges).SingleOrDefaultAsync();
         }
 
         /// <inheritdoc/>
-        public IEnumerable<Product> BulkGetProductsByName(IEnumerable<string> names, bool trackChanges)
+        public async Task<IEnumerable<Product>> BulkGetProductsByNameAsync(IEnumerable<string> names, bool trackChanges)
         {
-            return this.FindByCondition(x => names.Contains(x.Name), trackChanges).ToList();
+            return await this.FindByCondition(x => names.Contains(x.Name), trackChanges).ToListAsync();
         }
     }
 }

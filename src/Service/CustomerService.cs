@@ -36,9 +36,9 @@ namespace Service
         /// </summary>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>customer.</returns>
-        public IEnumerable<CustomerDto> GetAllCustomers(bool trackChanges)
+        public async Task<IEnumerable<CustomerDto>> GetAllCustomersAsync(bool trackChanges)
         {
-            var customers = this.repositoryManager.CustomerRepository.GetAllCustomers(trackChanges);
+            var customers =await  this.repositoryManager.CustomerRepository.GetAllCustomersAsync(trackChanges);
             var customersDto = this.mapper.Map<IEnumerable<CustomerDto>>(customers);
             return customersDto;
         }
