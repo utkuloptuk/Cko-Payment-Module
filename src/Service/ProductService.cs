@@ -37,9 +37,9 @@ namespace Service
         /// </summary>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>product.</returns>
-        public IEnumerable<ProductDto> GetAllProducts(bool trackChanges)
+        public async Task<IEnumerable<ProductDto>> GetAllProductsAsync(bool trackChanges)
         {
-            var products = this.repositoryManager.ProductRepository.GetAllProducts(trackChanges);
+            var products = await this.repositoryManager.ProductRepository.GetAllProductsAsync(trackChanges);
             var productDto = this.mapper.Map<IEnumerable<ProductDto>>(products);
             return productDto;
         }
@@ -50,10 +50,10 @@ namespace Service
         /// <param name="bulkData">condition.</param>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>Ienum productDto.</returns>
-        public IEnumerable<ProductDto> BulkGetProducts(IEnumerable<PaymentProcessProductDto> bulkData, bool trackChanges)
+        public async Task<IEnumerable<ProductDto>> BulkGetProductsAsync(IEnumerable<PaymentProcessProductDto> bulkData, bool trackChanges)
         {
             var bulkDataNames = this.mapper.Map<ProductForBulkGetDto>(bulkData);
-            var products = this.repositoryManager.ProductRepository.BulkGetProductsByName(bulkDataNames.names, trackChanges);
+            var products = await this.repositoryManager.ProductRepository.BulkGetProductsByNameAsync(bulkDataNames.names, trackChanges);
             var productsDto = this.mapper.Map<IEnumerable<ProductDto>>(products);
             return productsDto;
         }
@@ -64,9 +64,9 @@ namespace Service
         /// <param name="id">condition.</param>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>productDto.</returns>
-        public ProductDto GetProduct(Guid id, bool trackChanges)
+        public async Task<ProductDto> GetProductAsync(Guid id, bool trackChanges)
         {
-            var product = this.repositoryManager.ProductRepository.GetById(id, trackChanges);
+            var product = await this.repositoryManager.ProductRepository.GetByIdAsync(id, trackChanges);
             if (product is null)
             {
                 throw new ProductNotFoundException(id);

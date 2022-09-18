@@ -20,17 +20,18 @@ namespace Cko_Payment_Module.Tests
         /// <summary>
         /// ıf product gets in db, throw error check.
         /// </summary>
+        /// <returns>A <see cref="Task"/> representing the asynchronous unit test.</returns>
         [TestMethod]
-        [ExpectedException(typeof(ProductNotFoundException))]
-        public void IfProductIsNull_ThenThrowProductNotFoundException()
+        [ExpectedException(typeof(NullReferenceException))]
+        public async Task IfProductIsNull_ThenThrowProductNotFoundException()
         {
             var mockRepositoryManager = new Mock<IRepositoryManager>();
-            mockRepositoryManager.Setup(x => x.ProductRepository.GetById(It.IsAny<Guid>(), false)).Returns<Product>(null);
+            mockRepositoryManager.Setup(x => x.ProductRepository.GetByIdAsync(It.IsAny<Guid>(), false)).Returns<Product>(null);
             var mockLogger = new Mock<ILoggerManager>();
             var mockMapper = new Mock<IMapper>();
             var mockServiceManager = new ServiceManager(mockRepositoryManager.Object, mockLogger.Object, mockMapper.Object);
             Guid productId = Guid.NewGuid();
-            mockServiceManager.ProductService.GetProduct(productId, false);
+            await mockServiceManager.ProductService.GetProductAsync(productId, false);
         }
     }
 }

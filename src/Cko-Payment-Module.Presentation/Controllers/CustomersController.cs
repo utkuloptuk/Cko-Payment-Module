@@ -30,9 +30,9 @@ namespace Cko_Payment_Module.Presentation.Controllers
         /// </summary>
         /// <returns>StatusCode 200 or 500.</returns>
         [HttpGet]
-        public IActionResult GetCustomers()
+        public async Task<IActionResult> GetCustomers()
         {
-            var customers = this.serviceManager.CustomerService.GetAllCustomers(trackChanges: false);
+            var customers =await this.serviceManager.CustomerService.GetAllCustomersAsync(trackChanges: false);
             return this.Ok(customers);
         }
     }

@@ -16,7 +16,7 @@ namespace Contracts
         /// </summary>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>customers.</returns>
-        IEnumerable<Product> GetAllProducts(bool trackChanges);
+        Task<IEnumerable<Product>> GetAllProductsAsync(bool trackChanges);
 
         /// <summary>
         /// get product by id.
@@ -24,7 +24,7 @@ namespace Contracts
         /// <param name="productId">get condition.</param>
         /// <param name="trackChanges">asnotracking.</param>
         /// <returns>Product.</returns>
-        Product GetById(Guid productId, bool trackChanges);
+        Task<Product> GetByIdAsync(Guid productId, bool trackChanges);
 
         /// <summary>
         /// get products by name.
@@ -32,6 +32,6 @@ namespace Contracts
         /// <param name="names">get condition.</param>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>Products.</returns>
-        public IEnumerable<Product> BulkGetProductsByName(IEnumerable<string> names, bool trackChanges);
+        public Task<IEnumerable<Product>> BulkGetProductsByNameAsync(IEnumerable<string> names, bool trackChanges);
     }
 }

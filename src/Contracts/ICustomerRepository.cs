@@ -16,6 +16,6 @@ namespace Contracts
         /// </summary>
         /// <param name="trackChanges">asnotracking control.</param>
         /// <returns>customers.</returns>
-        IEnumerable<Customer> GetAllCustomers(bool trackChanges);
+        Task<IEnumerable<Customer>> GetAllCustomersAsync(bool trackChanges);
     }
 }

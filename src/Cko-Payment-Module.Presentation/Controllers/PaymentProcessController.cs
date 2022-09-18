@@ -20,9 +20,9 @@ namespace Cko_Payment_Module.Presentation.Controllers
         }
 
         [HttpPost]
-        public IActionResult CreatePaymentProcess([FromBody] PaymentProcessDto paymentProcessDto)
+        public async Task<IActionResult> CreatePaymentProcess([FromBody] PaymentProcessDto paymentProcessDto)
         {
-            var invoice = this.paymentProcessService.CreatePayment(paymentProcessDto);
+            var invoice =await this.paymentProcessService.CreatePayment(paymentProcessDto);
 
             return this.Ok(invoice);
         }

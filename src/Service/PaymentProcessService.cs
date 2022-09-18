@@ -11,6 +11,9 @@ namespace Service
     using Service.Contracts;
     using Shared.Dtos;
 
+    /// <summary>
+    /// Payment service layer.
+    /// </summary>
     public sealed class PaymentProcessService : IPaymentProcessService
     {
         private readonly IServiceManager serviceManager;
@@ -18,17 +21,28 @@ namespace Service
         private readonly ILoggerManager loggerManager;
         private readonly IMapper mapper;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="PaymentProcessService"/> class.
+        /// </summary>
+        /// <param name="loggerManager">logger imp.</param>
+        /// <param name="mapper">mapper imp.</param>
+        /// <param name="serviceManager">service manager imp.</param>
         public PaymentProcessService(ILoggerManager loggerManager, IMapper mapper, IServiceManager serviceManager)
         {
             this.mapper = mapper;
             this.loggerManager = loggerManager;
             this.serviceManager = serviceManager;
-            calculator = new PriceCalculationService();
+            this.calculator = new PriceCalculationService();
         }
 
-        public InvoiceDto CreatePayment(PaymentProcessDto paymentProcessDto)
+        /// <summary>
+        /// Create payment.
+        /// </summary>
+        /// <param name="paymentProcessDto">input.</param>
+        /// <returns>invoice.</returns>
+        public async Task<InvoiceDto> CreatePayment(PaymentProcessDto paymentProcessDto)
         {
-            var products = this.serviceManager.ProductService.BulkGetProducts(paymentProcessDto.products, trackChanges: false);
+            var products = await this.serviceManager.ProductService.BulkGetProductsAsync(paymentProcessDto.products, trackChanges: false);
             var prices = this.calculator.PriceCalculate(paymentProcessDto.customer, products, paymentProcessDto.products);
             Invoice invoice = new Invoice()
             {
@@ -53,7 +67,6 @@ namespace Service
             }
 
             return newInvoice;
-
         }
     }
 }
