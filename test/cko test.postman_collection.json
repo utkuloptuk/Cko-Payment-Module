@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "9fdfa611-5b54-43e7-bb6d-de96ab8595cc",
+		"name": "cko test",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get-all-customers",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{url}/api/customers",
+					"host": [
+						"{url}"
+					],
+					"path": [
+						"api",
+						"customers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/api/products",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-by-id-product",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/api/products/03b49cd7-190a-4104-82c8-4fa23f928974",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"03b49cd7-190a-4104-82c8-4fa23f928974"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add-invoice",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customerId\":\"5314362A-5F87-4B38-9A88-1174D5999CC5\",\r\n    \"grossPrice\":\"150.00\",\r\n    \"netPrice\":\"100.00\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/invoices",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoices"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add-invoice-detail",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"invoiceId\":\"40621055-E141-4C1F-53BF-08DA9705A871\",\r\n    \"productId\":\"03B49CD7-190A-4104-82C8-4FA23F928974\",\r\n    \"quantity\":\"15\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/invoicedetails",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"invoicedetails"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "payment-process",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"customer\":     {\r\n        \"id\": \"f6db198c-8780-4687-b5f6-9aa2530c65eb\",\r\n        \"name\": \"affiliate\",\r\n        \"lastName\": \"lastname1\",\r\n        \"telNo\": \"33333333\",\r\n        \"email\": \"email3@example.com\",\r\n        \"address\": \"new address1\",\r\n        \"userType\": 2,\r\n        \"creationDate\": \"2022-09-15T13:31:37.1069112\"\r\n    },\r\n    \"products\": [\r\n        {\r\n            \"name\": \"product1\",\r\n            \"quantity\": \"3\"\r\n        },\r\n        {\r\n            \"name\": \"product4\",\r\n            \"quantity\": \"4\"\r\n        },\r\n        {\r\n            \"name\": \"product3\",\r\n            \"quantity\": \"15\"\r\n        }\r\n    ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/api/PaymentProcess",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"api",
+						"PaymentProcess"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
